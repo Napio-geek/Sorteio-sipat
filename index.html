@@ -20,16 +20,12 @@
 html,body{
   margin:0;
   padding:0;
-  width:100%;
-  height:100%;
+  width:100vw;
+  height:100vh;
   font-family: 'Montserrat', sans-serif;
-  background: var(--bg-dark);
+  background: #021e26;
   color: var(--text-light);
-  overflow-x:hidden;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  overflow:hidden;
 }
 
 .main-wrapper {
@@ -40,27 +36,29 @@ html,body{
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 10px 16px;
-  background: radial-gradient(circle at center, #075269 0%, #021e26 100%);
+  background: #021e26;
 }
 
 .header-bar {
-  width: 100%;
-  max-width: 1500px;
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 1600px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
-  background: rgba(4, 57, 71, 0.85);
-  border: 1px solid rgba(184, 245, 27, 0.3);
+  padding: 8px 18px;
+  background: rgba(4, 57, 71, 0.9);
+  border: 1px solid rgba(184, 245, 27, 0.35);
   border-radius: 14px;
-  backdrop-filter: blur(8px);
-  gap: 10px;
-  flex-wrap: wrap;
+  backdrop-filter: blur(10px);
+  z-index: 20;
 }
 
 .brand-title h1 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 900;
   color: #fff;
   margin: 0;
@@ -68,7 +66,7 @@ html,body{
 }
 
 .brand-title span {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--lime-green);
   font-weight: 700;
   text-transform: uppercase;
@@ -79,48 +77,44 @@ html,body{
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(2, 30, 38, 0.8);
-  padding: 6px 12px;
+  background: rgba(2, 30, 38, 0.85);
+  padding: 5px 12px;
   border-radius: 10px;
   border: 1px solid rgba(184, 245, 27, 0.4);
 }
 
 .config-box label {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--lime-green);
 }
 
 .config-box input {
-  width: 75px;
+  width: 70px;
   background: #032b36;
   border: 1px solid var(--lime-green);
   color: #fff;
-  padding: 4px 8px;
+  padding: 4px 6px;
   border-radius: 8px;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-align: center;
   outline: none;
 }
 
-/* PALCO DO SORTEIO INTEGRADO COM A ARTE */
+/* PALCO EM TELA CHEIA (100VW x 100VH) */
 .stage {
   position: relative;
-  width: min(100vw - 20px, 1400px);
-  flex: 1;
-  max-height: calc(100vh - 170px);
-  aspect-ratio: 16/9;
-  margin: 6px auto;
-  background: url('visual_sipat.png') center/contain no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background: url('visual_sipat.png') center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
-/* PAINEL DE NÚMEROS ENCAIXADO NO CARTÃO ESCURO DA IMAGEM */
+/* PAINEL DE NÚMEROS ENCAIXADO PERFEITAMENTE */
 .number-panel {
   position: absolute;
   top: 36.5%;
@@ -132,48 +126,47 @@ html,body{
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  border-radius: 24px;
-  transition: all 0.25s ease;
 }
 
 .number {
   font-weight: 900;
-  font-size: clamp(40px, 7.5vw, 120px);
+  font-size: clamp(50px, 8.5vw, 130px);
   line-height: 1;
   letter-spacing: .05em;
   color: #ffffff;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+  text-shadow: 0 4px 18px rgba(0,0,0,0.8);
 }
 
 .status {
-  font-size: clamp(9px, 0.9vw, 14px);
+  font-size: clamp(10px, 1.1vw, 16px);
   letter-spacing: .18em;
   text-align: center;
-  margin-top: 4px;
+  margin-top: 6px;
   color: var(--lime-green);
   font-weight: 800;
   text-transform: uppercase;
 }
 
-/* BOTÃO ENCAIXADO EXATAMENTE NO BOTÃO DA ARTE DE FUNDO */
+/* BOTÃO INTERATIVO NA POSIÇÃO EXATA */
 .draw-btn {
   position: absolute;
-  top: 68%;
-  left: 33.5%;
-  width: 33%;
-  height: 10.5%;
+  top: 68.2%;
+  left: 33.6%;
+  width: 32.8%;
+  height: 11.2%;
   border: 0;
   border-radius: 50px;
   background: transparent;
   color: #032b36;
-  font-size: clamp(13px, 1.5vw, 20px);
+  font-size: clamp(14px, 1.7vw, 22px);
   font-weight: 900;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   transition: transform 0.15s ease;
+  z-index: 10;
 }
 
 .draw-btn:hover:not(:disabled) {
@@ -242,27 +235,32 @@ html,body{
 }
 
 .results {
-  width: 100%;
-  max-width: 1500px;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 1600px;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 12px;
   align-items: center;
+  z-index: 20;
 }
 
 .card {
-  background: rgba(4, 57, 71, 0.85);
-  border: 1px solid rgba(184, 245, 27, 0.2);
+  background: rgba(4, 57, 71, 0.88);
+  border: 1px solid rgba(184, 245, 27, 0.25);
   border-radius: 12px;
-  padding: 8px 14px;
+  padding: 6px 14px;
   color: #fff;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
 }
 
-.card h2 { font-size: 13px; margin: 0 0 4px; color: var(--lime-green); }
+.card h2 { font-size: 12px; margin: 0 0 4px; color: var(--lime-green); }
 .history-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.history { display: flex; flex-wrap: wrap; gap: 6px; max-height: 42px; overflow-y: auto; }
-.chip { background: var(--lime-green); border-radius: 6px; padding: 3px 7px; font-weight: 800; color: #032b36; font-size: 11px; }
+.history { display: flex; flex-wrap: wrap; gap: 6px; max-height: 38px; overflow-y: auto; }
+.chip { background: var(--lime-green); border-radius: 6px; padding: 2px 7px; font-weight: 800; color: #032b36; font-size: 11px; }
 .small { font-size: 11px; color: #a2cad3; }
 
 .action {
@@ -270,17 +268,12 @@ html,body{
   background: #007782;
   color: white;
   border-radius: 6px;
-  padding: 6px 10px;
+  padding: 5px 10px;
   font-weight: 700;
   cursor: pointer;
   font-size: 11px;
 }
 .action.reset { background: #a82e3e; }
-
-@media(max-width: 768px){
-  .header-bar { flex-direction: column; text-align: center; }
-  .results { grid-template-columns: 1fr; }
-}
 </style>
 </head>
 <body>
@@ -293,7 +286,7 @@ html,body{
       <span>Sorteio Eletrônico Dinâmico</span>
     </div>
     <div class="config-box">
-      <label for="totalParticipants">Total de Participantes:</label>
+      <label for="totalParticipants">Total Participantes:</label>
       <input type="number" id="totalParticipants" value="150" min="1" max="9999" onchange="updateTotal(this.value)">
     </div>
   </header>
