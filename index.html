@@ -12,7 +12,6 @@
   --dark-teal: #043947;
   --bg-dark: #021e26;
   --lime-green: #b8f51b;
-  --card-bg: #064556;
   --text-light: #f0f9fa;
 }
 
@@ -20,12 +19,16 @@
 html,body{
   margin:0;
   padding:0;
-  width:100vw;
-  height:100vh;
+  width:100%;
+  height:100%;
   font-family: 'Montserrat', sans-serif;
-  background: #021e26;
+  background: var(--bg-dark);
   color: var(--text-light);
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
 .main-wrapper {
@@ -36,24 +39,24 @@ html,body{
   justify-content: space-between;
   align-items: center;
   position: relative;
-  background: #021e26;
+  padding: 10px 16px;
+  background: radial-gradient(circle at center, #075269 0%, #021e26 100%);
 }
 
+/* BARRA SUPERIOR */
 .header-bar {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 32px);
-  max-width: 1600px;
+  width: 100%;
+  max-width: 1500px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 18px;
-  background: rgba(4, 57, 71, 0.9);
-  border: 1px solid rgba(184, 245, 27, 0.35);
-  border-radius: 14px;
-  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  background: rgba(4, 57, 71, 0.85);
+  border: 1px solid rgba(184, 245, 27, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  gap: 10px;
+  flex-wrap: wrap;
   z-index: 20;
 }
 
@@ -77,9 +80,9 @@ html,body{
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(2, 30, 38, 0.85);
-  padding: 5px 12px;
-  border-radius: 10px;
+  background: rgba(2, 30, 38, 0.8);
+  padding: 4px 10px;
+  border-radius: 8px;
   border: 1px solid rgba(184, 245, 27, 0.4);
 }
 
@@ -94,27 +97,27 @@ html,body{
   background: #032b36;
   border: 1px solid var(--lime-green);
   color: #fff;
-  padding: 4px 6px;
-  border-radius: 8px;
+  padding: 3px 6px;
+  border-radius: 6px;
   font-weight: 800;
   font-size: 0.95rem;
   text-align: center;
   outline: none;
 }
 
-/* PALCO EM TELA CHEIA (100VW x 100VH) */
-.stage {
+/* CONTAINER COM PROPORÇÃO 16:9 FIXA */
+.stage-container {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  background: url('visual_sipat.png') center/cover no-repeat;
+  width: min(100vw - 20px, calc((100vh - 160px) * (16 / 9)));
+  aspect-ratio: 16 / 9;
+  background: url('visual_sipat.png') center/contain no-repeat;
+  margin: auto;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-/* PAINEL DE NÚMEROS ENCAIXADO PERFEITAMENTE */
+/* PAINEL DE NÚMEROS */
 .number-panel {
   position: absolute;
   top: 36.5%;
@@ -130,24 +133,24 @@ html,body{
 
 .number {
   font-weight: 900;
-  font-size: clamp(50px, 8.5vw, 130px);
+  font-size: clamp(40px, 7vw, 110px);
   line-height: 1;
   letter-spacing: .05em;
   color: #ffffff;
-  text-shadow: 0 4px 18px rgba(0,0,0,0.8);
+  text-shadow: 0 4px 16px rgba(0,0,0,0.8);
 }
 
 .status {
-  font-size: clamp(10px, 1.1vw, 16px);
+  font-size: clamp(8px, 1vw, 14px);
   letter-spacing: .18em;
   text-align: center;
-  margin-top: 6px;
+  margin-top: 4px;
   color: var(--lime-green);
   font-weight: 800;
   text-transform: uppercase;
 }
 
-/* BOTÃO INTERATIVO NA POSIÇÃO EXATA */
+/* BOTÃO TRANSPARENTE ENCAIXADO NO BOTÃO DA ARTE */
 .draw-btn {
   position: absolute;
   top: 68.2%;
@@ -157,20 +160,13 @@ html,body{
   border: 0;
   border-radius: 50px;
   background: transparent;
-  color: #032b36;
-  font-size: clamp(14px, 1.7vw, 22px);
-  font-weight: 900;
+  color: transparent;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: transform 0.15s ease;
   z-index: 10;
 }
 
 .draw-btn:hover:not(:disabled) {
-  transform: scale(1.02);
+  opacity: 0.8;
 }
 
 .draw-btn:disabled {
@@ -178,6 +174,7 @@ html,body{
   cursor: wait;
 }
 
+/* BANNER DE GANHADOR */
 .winner-banner {
   position: absolute;
   top: 50%;
@@ -234,13 +231,10 @@ html,body{
   cursor: pointer;
 }
 
+/* RODAPÉ E HISTÓRICO */
 .results {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 32px);
-  max-width: 1600px;
+  width: 100%;
+  max-width: 1500px;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 12px;
@@ -249,12 +243,12 @@ html,body{
 }
 
 .card {
-  background: rgba(4, 57, 71, 0.88);
-  border: 1px solid rgba(184, 245, 27, 0.25);
-  border-radius: 12px;
+  background: rgba(4, 57, 71, 0.85);
+  border: 1px solid rgba(184, 245, 27, 0.2);
+  border-radius: 10px;
   padding: 6px 14px;
   color: #fff;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
 }
 
 .card h2 { font-size: 12px; margin: 0 0 4px; color: var(--lime-green); }
@@ -274,6 +268,11 @@ html,body{
   font-size: 11px;
 }
 .action.reset { background: #a82e3e; }
+
+@media(max-width: 768px){
+  .header-bar { flex-direction: column; text-align: center; }
+  .results { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -291,13 +290,13 @@ html,body{
     </div>
   </header>
 
-  <main class="stage" id="stage">
+  <main class="stage-container" id="stage">
     <div class="number-panel" id="numberPanel">
       <div class="number" id="number">---</div>
       <div class="status" id="status">PRONTO PARA O SORTEIO</div>
     </div>
     
-    <button class="draw-btn" id="draw"></button>
+    <button class="draw-btn" id="draw" title="Clique para Sortear"></button>
 
     <div class="winner-banner" id="winnerBanner">
       <h1>🎉 PARABÉNS! 🎉</h1>
@@ -484,32 +483,3 @@ html,body{
         }, 300);
 
         render();
-      }
-    }, 85);
-  });
-
-  $('export').addEventListener('click', ()=>{
-    const rows = [['Premio','Numero','Data e hora'], ...state.winners.map((w,i)=>[state.winners.length-i, pad(w.number), w.time])];
-    const csv = rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob(['\ufeff'+csv], {type:'text/csv;charset=utf-8'}));
-    a.download = 'ganhadores-sipat-atlantico.csv';
-    a.click();
-    URL.revokeObjectURL(a.href);
-  });
-
-  $('reset').addEventListener('click', ()=>{
-    if(confirm('ATENÇÃO: apagar o histórico e liberar novamente todos os números de 1 a '+state.total+'?')){
-      state.winners=[];
-      save();
-      $('number').textContent='---';
-      $('status').textContent='PRONTO PARA O SORTEIO';$('winnerBanner').classList.remove('show');
-      render();
-    }
-  });
-
-  render();
-})();
-</script>
-</body>
-</html>
