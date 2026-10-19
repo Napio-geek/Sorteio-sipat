@@ -52,8 +52,8 @@ html,body{
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
-  background: rgba(4, 57, 71, 0.75);
-  border: 1px solid rgba(184, 245, 27, 0.25);
+  background: rgba(4, 57, 71, 0.85);
+  border: 1px solid rgba(184, 245, 27, 0.3);
   border-radius: 16px;
   backdrop-filter: blur(8px);
   gap: 10px;
@@ -83,7 +83,6 @@ html,body{
   color: #fff;
   margin: 0;
   line-height: 1;
-  letter-spacing: -0.5px;
 }
 
 .sipat-title span {
@@ -94,15 +93,14 @@ html,body{
   letter-spacing: 1px;
 }
 
-/* Área de Configuração de Participantes na Hora */
 .config-box {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(2, 30, 38, 0.6);
+  background: rgba(2, 30, 38, 0.8);
   padding: 6px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(184, 245, 27, 0.3);
+  border: 1px solid rgba(184, 245, 27, 0.4);
 }
 
 .config-box label {
@@ -131,7 +129,7 @@ html,body{
   max-height: calc(100vh - 180px);
   aspect-ratio: 16/9;
   margin: 8px auto;
-  background: linear-gradient(135deg, rgba(6, 69, 86, 0.9), rgba(3, 43, 54, 0.95));
+  background: url('visual_sipat.png') center/cover no-repeat;
   border-radius: 20px;
   border: 2px solid rgba(184, 245, 27, 0.4);
   box-shadow: 0 12px 40px rgba(0,0,0,0.6);
@@ -143,42 +141,43 @@ html,body{
 }
 
 .number-panel {
-  width: min(80%, 650px);
-  height: 48%;
+  width: min(70%, 550px);
+  height: 44%;
   border-radius: 24px;
-  background: linear-gradient(135deg, #075b79, #032b36);
+  background: rgba(3, 43, 54, 0.88);
   border: 3px solid var(--lime-green);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #fff;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 0 20px rgba(184, 245, 27, 0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6), inset 0 0 20px rgba(184, 245, 27, 0.2);
+  backdrop-filter: blur(6px);
   transition: all 0.3s ease;
 }
 
 .number-panel.spinning {
   border-color: #ffffff;
-  background: linear-gradient(135deg, #09759b, #054555);
+  background: rgba(9, 117, 155, 0.92);
 }
 
 .number-panel.winner {
   border-color: var(--lime-green);
-  background: linear-gradient(135deg, #0a84b0, #075b79);
-  box-shadow: 0 0 45px rgba(184, 245, 27, 0.6);
+  background: rgba(10, 132, 176, 0.95);
+  box-shadow: 0 0 45px rgba(184, 245, 27, 0.7);
 }
 
 .number {
   font-weight: 900;
-  font-size: clamp(50px, 11vw, 150px);
+  font-size: clamp(48px, 9vw, 130px);
   line-height: 1;
   letter-spacing: .05em;
   color: #ffffff;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
 .status {
-  font-size: clamp(10px, 1.2vw, 18px);
+  font-size: clamp(10px, 1.1vw, 16px);
   letter-spacing: .2em;
   text-align: center;
   margin-top: 8px;
@@ -188,14 +187,14 @@ html,body{
 }
 
 .draw-btn {
-  margin-top: 20px;
-  width: min(70%, 420px);
-  height: 62px;
+  margin-top: 18px;
+  width: min(60%, 360px);
+  height: 58px;
   border: 0;
   border-radius: 50px;
   background: var(--lime-green);
   color: #032b36;
-  font-size: clamp(14px, 2.2vw, 24px);
+  font-size: clamp(14px, 1.8vw, 22px);
   font-weight: 900;
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(184, 245, 27, 0.4);
@@ -204,6 +203,7 @@ html,body{
   align-items: center;
   justify-content: center;
   gap: 10px;
+  z-index: 2;
 }
 
 .draw-btn:hover:not(:disabled) {
@@ -246,7 +246,6 @@ html,body{
   margin: 0 0 4px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
 .winner-banner .winner-num {
@@ -332,29 +331,26 @@ html,body{
 
 <div class="main-wrapper">
 
-  <!-- Cabeçalho com Ajuste de Participantes -->
   <header class="header-bar">
     <div class="brand-area">
-      <svg class="logo-img" viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="logo-img" viewBox="0 0 280 60" fill="none" style="height:40px">
         <circle cx="30" cy="30" r="22" stroke="white" stroke-width="4.5"/>
         <path d="M 22 38 L 38 22 M 38 22 L 28 22 M 38 22 L 38 32" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
         <text x="65" y="38" fill="white" font-family="'Montserrat', sans-serif" font-weight="900" font-size="24" letter-spacing="2">ATLÂNTICO</text>
       </svg>
       <div class="sipat-title">
         <h1>SIPAT ATLÂNTICO 2026</h1>
-        <span>Sorteio Eletrônico Dinâmico</span>
+        <span>Sorteio Eletrônico Oficial</span>
       </div>
     </div>
 
-    <!-- Campo Editável na Hora para o Total de Pessoas/Números -->
     <div class="config-box">
-      <label for="totalParticipants">Total de Participantes:</label>
+      <label for="totalParticipants">Participantes:</label>
       <input type="number" id="totalParticipants" value="150" min="1" max="9999" onchange="updateTotal(this.value)">
     </div>
   </header>
 
-  <!-- Palco do Sorteio -->
-  <main class="stage" id="stage" aria-label="Sorteio eletrônico SIPAT Atlântico">
+  <main class="stage" id="stage">
     <div class="number-panel" id="numberPanel">
       <div class="number" id="number">---</div>
       <div class="status" id="status">PRONTO PARA O SORTEIO</div>
@@ -364,7 +360,6 @@ html,body{
       <span>🎲</span> SORTEAR AGORA
     </button>
 
-    <!-- Banner Vencedor -->
     <div class="winner-banner" id="winnerBanner">
       <h1>🎉 PARABÉNS! 🎉</h1>
       <p>VOCÊ GANHOU!</p>
@@ -373,7 +368,6 @@ html,body{
     </div>
   </main>
 
-  <!-- Controles e Histórico Inferior -->
   <footer class="results">
     <div class="card">
       <div class="history-head">
@@ -402,12 +396,10 @@ html,body{
   if(typeof state.total !== 'number' || state.total < 1) state.total = 150;
   if(!Array.isArray(state.winners)) state.winners = [];
 
-  // Ajusta o input visual com o valor salvo
   document.getElementById('totalParticipants').value = state.total;
 
   const $=x=>document.getElementById(x);
   
-  // Formatação dinâmica dos zeros à esquerda de acordo com o tamanho do número máximo
   const pad=(n)=>{
     let maxDigits = String(state.total).length;
     if(maxDigits < 3) maxDigits = 3;
@@ -416,7 +408,6 @@ html,body{
 
   const pool=()=>Array.from({length:state.total},(_,i)=>i+1).filter(n=>!state.winners.some(w=>w.number===n));
 
-  // Audio Context
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   let audioCtx = null;
 
